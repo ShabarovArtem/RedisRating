@@ -1,0 +1,40 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "env-cmd --silent ts-node src/main.ts",
+    "dev:watch": "tsc-watch --onSuccess \"npm run start\"",
+    "type-check": "tsc --noEmit --project tsconfig.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/express": "^5.0.0",
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/node": "^22.10.5",
+    "@types/validator": "^13.12.2",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "tsc-watch": "^6.2.1",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "env-cmd": "^10.1.0",
+    "express": "^4.21.2",
+    "express-async-errors": "^3.1.1",
+    "express-fileupload": "^1.5.1",
+    "express-validator": "^7.2.0",
+    "path": "^0.12.7",
+    "pg": "^8.13.1",
+    "pg-hstore": "^2.3.4",
+    "redis": "^4.7.0",
+    "reflect-metadata": "^0.2.2",
+    "sequelize": "^6.37.5",
+    "sequelize-typescript": "^2.1.6"
+  }
+}

@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_HOST=app-db
+      - DB_PORT=${DB_PORT}
+      - REDIS_URL=redis://redis:6379
+      - PORT=${PORT}
+    depends_on:
+      - app-db
+      - redis
+    ports:
+      - "6000:6000"
+      - "9000:9000"   # Добавьте эту строку для проброса порта 9000
+
+  app-db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
